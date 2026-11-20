@@ -17,6 +17,7 @@ public class UsaProdotto {
             System.out.println(e.getMessage());
         }
 
+        mouse.vendi(2);
         System.out.println(Prodotto.getNumeroProdottiCreati());
 
     }
