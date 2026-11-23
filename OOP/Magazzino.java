@@ -44,16 +44,26 @@ public class Magazzino {
 
     public void vendiProdotto(String nome, int quantitaVenduta) {
         Prodotto prodottoTrovato = cercaProdottoPerNome(nome);
-        if (quantitaVenduta < 0) {
-            throw new IllegalArgumentException("Quantità inserita non valida");
-        }
         if (prodottoTrovato != null) {
-            if (prodottoTrovato.getQuantita() < quantitaVenduta) {
-                throw new IllegalArgumentException("Scorte di magazzino non sufficienti");
-            }
             prodottoTrovato.vendi(quantitaVenduta);
         }else{
             throw new IllegalArgumentException("Prodotto inesistente");
         }
+    }
+
+    public List<Prodotto> trovaProdottiSottoScorta(int soglia) {
+
+        if (soglia < 0) {
+            throw new IllegalArgumentException("La soglia non può essere negativa");
+        }
+        List<Prodotto> prodottiALimite = new ArrayList<>();
+
+        for (Prodotto p : prodotti) {
+            if (p.getQuantita() < soglia) {
+                prodottiALimite.add(p);
+            }
+        }
+
+        return List.copyOf(prodottiALimite);
     }
 }
