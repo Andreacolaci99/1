@@ -11,13 +11,14 @@ public class UsaProdotto {
 
         System.out.println(Prodotto.getNumeroProdottiCreati());
 
-        try {
+      /*   try {
             Prodotto errore = new Prodotto("Monitor", -5, 150);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
+*/
         mouse.vendi(2);
+        tastiera.vendi(0);
         System.out.println(Prodotto.getNumeroProdottiCreati());
 
     }
